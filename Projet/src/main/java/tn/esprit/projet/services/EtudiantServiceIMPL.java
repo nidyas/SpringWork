@@ -3,6 +3,7 @@ package tn.esprit.projet.services;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.projet.entities.*;
 import tn.esprit.projet.repository.ContratRepository;
 import tn.esprit.projet.repository.DepartementRepository;
@@ -69,7 +70,7 @@ public class EtudiantServiceIMPL implements IEtudiantService{
         etd.setDepartement(dep);
         etudiantRepository.save(etd);
     }
-
+    @Transactional
     @Override
     public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Long idContract, Long idEquipe) {
             Equipe equipe =equipeRepository.findById(idEquipe).orElse(null);

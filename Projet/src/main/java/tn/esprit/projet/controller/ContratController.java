@@ -41,6 +41,6 @@ public class ContratController {
     @PostMapping("/addCtrTo/{prenom}")
     public void  addContratToStudent(@RequestBody Contrat C,@PathVariable("prenom")String pre){
 
-        contratService.affectContratToEtudiant(C,"test1",pre);
+        contratService.affectContratToEtudiant(C,pre);
     }
 }

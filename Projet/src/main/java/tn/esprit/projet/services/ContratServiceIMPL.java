@@ -47,10 +47,11 @@ public class ContratServiceIMPL implements  IContratService{
     }
 
     @Override
-    public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
+    public Contrat affectContratToEtudiant(Contrat ce, String prenomE) {
+        //Contrat contrat = this.contratRepository.findById(ce.getIdContrat()).orElse(null);
         Etudiant etudiant=etudiantRepository.findEtudiantByprenom(prenomE);
-        etudiant.getContrats().add(ce);
-        System.out.println("------------>"+etudiant.getContrats());
+
+        ce.setEtudiant(etudiant);
         contratRepository.save(ce);
         return ce;
     }
