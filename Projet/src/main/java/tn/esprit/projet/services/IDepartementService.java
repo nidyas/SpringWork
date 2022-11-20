@@ -6,6 +6,7 @@ import tn.esprit.projet.entities.Departement;
 import tn.esprit.projet.entities.Option;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IDepartementService {
 
@@ -17,4 +18,6 @@ public interface IDepartementService {
     Departement getdepbyid(long id);
 
     List<Departement> retrieveDepartementByOptionEtudiant( Option op);
+
+    Set<Departement> retrieveDepartementsByUniversite(Long idUniversite);
 }

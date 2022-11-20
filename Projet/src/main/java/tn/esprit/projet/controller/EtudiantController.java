@@ -13,6 +13,7 @@ import tn.esprit.projet.services.EtudiantServiceIMPL;
 import tn.esprit.projet.services.IEtudiantService;
 
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @RestController
@@ -71,6 +72,13 @@ public class EtudiantController {
     @PostMapping("/addeqpC/{idContrat}/{idEquipe}")
     public void  addEtudtoEqpandContrat(@RequestBody Etudiant E,@PathVariable("idContrat") Long idC,@PathVariable("idEquipe") Long idEquipe){
             etudiantService.addAndAssignEtudiantToEquipeAndContract(E,idC,idEquipe);
+    }
+
+
+    @GetMapping("/getDepById/{idDepart}")
+    public Set<Etudiant> getDepartmntbyid(@PathVariable("idDepart") Long id){
+
+        return  etudiantService.getEtudiantsByDepartement(id);
     }
 
 

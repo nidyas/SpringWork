@@ -6,6 +6,7 @@ import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.entities.Option;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IEtudiantService {
 
@@ -23,5 +24,8 @@ public interface IEtudiantService {
     public  void AssignEtudtoDepartement(Long idEtudiant, Long idDepart);
 
      Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e,Long idContract,Long idEquipe);
+
+    Set<Etudiant> getEtudiantsByDepartement (Long idDepartement);
+
 
 }

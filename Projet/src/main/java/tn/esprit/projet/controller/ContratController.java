@@ -3,11 +3,13 @@ package tn.esprit.projet.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.projet.entities.Contrat;
 import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.services.IContratService;
 
+import java.util.Date;
 import java.util.List;
 @AllArgsConstructor
 @RestController
@@ -42,5 +44,17 @@ public class ContratController {
     public void  addContratToStudent(@RequestBody Contrat C,@PathVariable("prenom")String pre){
 
         contratService.affectContratToEtudiant(C,pre);
+    }
+    @GetMapping("/getValide/{DateDebutContrat}/{DateFinContrat}")
+    public Integer GetValide(@PathVariable("DateDebutContrat") @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)Date dateD, @PathVariable("DateFinContrat")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date dateF){
+
+        return  contratService.nbContratsValides(dateD,dateF);
+    }
+
+
+    @GetMapping("/getCA/{DateDebutContrat}/{DateFinContrat}")
+    public Float GetCA(@PathVariable("DateDebutContrat") @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)Date dateD, @PathVariable("DateFinContrat")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date dateF){
+
+        return  contratService.getChiffreAffaireEntreDeuxDate(dateD,dateF);
     }
 }

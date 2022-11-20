@@ -82,6 +82,12 @@ public class EtudiantServiceIMPL implements IEtudiantService{
 
     }
 
+    @Override
+    public Set<Etudiant> getEtudiantsByDepartement(Long idDepartement) {
+        Departement departement=departementRepository.findById(idDepartement).orElse(null);
+
+        return departement.getEtudiants();
+    }
 
 
 }
