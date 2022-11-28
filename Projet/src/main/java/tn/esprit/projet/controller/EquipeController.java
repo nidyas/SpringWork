@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class EquipeController {
 
 
@@ -33,6 +34,12 @@ public class EquipeController {
 
         C.setIdEquipe(id);
        iEquipeService.updateeqp(C);
+    }
+
+
+    @GetMapping("/getbyid/{IdEquipe}")
+    public Equipe getEqpbyid(@PathVariable("IdEquipe") Long id){
+        return iEquipeService.geteqbyid(id);
     }
 
     @GetMapping("/findIdEtudiant/{idEtudiant}")
@@ -73,9 +80,9 @@ public class EquipeController {
 
         return  iEquipeService.findEquipeByEtudiantsAndDetailEquipe1ThematiqueNonNull(id);
     }*/
-    /*@DeleteMapping("/delDetEquipe/{IdEquipe}")
+    @DeleteMapping("/delEqp/{IdEquipe}")
     public  void deleteEqp(@PathVariable("IdEquipe") Long id){
 
         iEquipeService.deleteeqp(id);
-    }*/
+    }
 }
