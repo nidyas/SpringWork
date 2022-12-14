@@ -2,14 +2,10 @@ package tn.esprit.projet.controller;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.projet.entities.Equipe;
 import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.entities.Option;
-import tn.esprit.projet.services.EtudiantServiceIMPL;
 import tn.esprit.projet.services.IEtudiantService;
 
 import java.util.List;

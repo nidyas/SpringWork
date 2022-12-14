@@ -2,7 +2,6 @@ package tn.esprit.projet.controller;
 
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.projet.entities.Equipe;
 import tn.esprit.projet.entities.Universite;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class UniversiteController {
 
 
@@ -43,6 +43,10 @@ public class UniversiteController {
     @PostMapping("/addUniDep/{idUni}/{idDepart}")
     public void  addUnivtoDep(@PathVariable("idUni") Long idU,@PathVariable("idDepart") Long id){
         iUniversiteService.assignDepartToUni(idU, id);
+    }
+    @GetMapping("/getUniById/{idUniv}")
+    public Universite getUniversiteById(@PathVariable("idUniv") Long id) {
+        return iUniversiteService.getUnid(id);
     }
 
 }

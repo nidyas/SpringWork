@@ -12,9 +12,11 @@ import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.services.IDetailEquipeService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class DetailEquipeController {
 
 
@@ -33,22 +35,32 @@ public class DetailEquipeController {
     }
 
 
-    @PutMapping("/putDetEquipe/{IdEquipe}")
-    public void updateDetEqp(@PathVariable("IdEquipe") Long id, @RequestBody DetailEquipe C){
+    @PutMapping("/putDetEquipe/{IdEqp}")
+    public void updateDetEqp(@PathVariable("IdEqp") Long id, @RequestBody DetailEquipe C){
 
-        C.setIdEquipe(id);
+        C.setIdEqp(id);
         detailEquipeService.updatedeqp(C);
     }
-    @DeleteMapping("/delDetEquipe/{IdEquipe}")
-    public  void deleteDetEqp(@PathVariable("IdEquipe") Long id){
+    @DeleteMapping("/delDetEquipe/{IdEqp}")
+    public  void deleteDetEqp(@PathVariable("IdEqp") Long id){
 
        detailEquipeService.deletedeqp(id);
+    }
+
+
+    @GetMapping("/getDetbyid/{IdEquipe}")
+    public DetailEquipe findbyid(@PathVariable("IdEqp") Long  id){
+        return  detailEquipeService.getdeqpbyid(id);
     }
     @GetMapping("/getth/{thematique}")
     public List<DetailEquipe>findbyThem(@PathVariable("thematique") String Theme){
         return  detailEquipeService.findByThematiqueLike(Theme);
     }
 
+    @GetMapping("/getNB/{thematique}")
+    Map<String, Long> countByThematique(@PathVariable("thematique") String Theme ){
+        return  detailEquipeService.countByThematique(Theme);
+    }
 
 
 }

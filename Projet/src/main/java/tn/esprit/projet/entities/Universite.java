@@ -18,6 +18,7 @@ public class Universite   implements Serializable{
     @Column(name="idUni")
     private Long idUni; // Clé primaire
     private String nomUni;
+    private String description;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Departement> departement;
 

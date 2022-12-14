@@ -29,8 +29,8 @@ public class Contrat implements Serializable {
     private  boolean archive;
     @Enumerated(EnumType.STRING)
     private Specialite specialite;
-    @ManyToOne(cascade = CascadeType.ALL)
-    Etudiant etudiant;
+        @ManyToOne(cascade = CascadeType.ALL)
+        Etudiant etudiant;
 
 
 // Constructeur et accesseurs (getters) et mutateurs (setters)

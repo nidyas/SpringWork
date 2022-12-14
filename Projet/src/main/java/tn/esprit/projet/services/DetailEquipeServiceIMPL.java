@@ -8,6 +8,8 @@ import tn.esprit.projet.entities.DetailEquipe;
 import tn.esprit.projet.repository.DetailEquipeRepository;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -45,4 +47,11 @@ public class DetailEquipeServiceIMPL  implements  IDetailEquipeService{
     public List<DetailEquipe> findByThematiqueLike(String thematique) {
         return detailEquipeRepository.findByThematiqueLike(thematique);
     }
+    public Map<String, Long> countByThematique(String theme) {
+        List<DetailEquipe> DetailList= detailEquipeRepository.findByThematiqueLike(theme);
+        Map<String, Long> thematique = DetailList.stream().collect(Collectors
+                .groupingBy(DetailEquipe::getThematique, Collectors.counting()));
+        return thematique;
+    }
+
 }

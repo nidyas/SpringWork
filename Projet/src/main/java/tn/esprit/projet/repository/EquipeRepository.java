@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import tn.esprit.projet.entities.Contrat;
 import tn.esprit.projet.entities.Equipe;
 import tn.esprit.projet.entities.Niveau;
 
@@ -26,7 +25,8 @@ public interface EquipeRepository extends JpaRepository<Equipe,Long> {
 
 
 
-    @Query("SELECT  equipe from Equipe equipe , DetailEquipe deq where equipe.idEquipe = deq.equipe.idEquipe and deq.thematique= :thematique and equipe.niveau= :niveau")
-    List<Equipe> retriveEquipeByNiveauAndThematique(@Param("niveau") Niveau niveau ,@Param("thematique") String thematique);
+    /*@Query("SELECT  equipe from Equipe equipe , DetailEquipe deq where equipe.idEquipe = deq.equipe.idEquipe and deq.thematique= :thematique and equipe.niveau= :niveau")
+    List<Equipe> retriveEquipeByNiveauAndThematique(@Param("niveau") Niveau niveau ,@Param("thematique") String thematique);*/
+
 
 }

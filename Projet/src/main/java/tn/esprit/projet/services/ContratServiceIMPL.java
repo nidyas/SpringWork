@@ -2,7 +2,7 @@ package tn.esprit.projet.services;
 
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.projet.entities.Contrat;
 import tn.esprit.projet.entities.Equipe;
@@ -10,8 +10,10 @@ import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.repository.ContratRepository;
 import tn.esprit.projet.repository.EtudiantRepository;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @AllArgsConstructor
@@ -120,5 +122,21 @@ public class ContratServiceIMPL implements  IContratService{
 
         }
         return CA;
+    }
+
+    @Scheduled( cron = "0 0 13 * * *")
+    public  void retrieveAndUpdateStatusContrat(){
+        List< Contrat> contrat= contratRepository.findAll();
+        for(int i=0;i<contrat.size();i++) {
+            Contrat ct = contrat.get(i);
+            long daysBetween = ct.getDateFinContrat().getTime()-ct.getDateDebutContrat().getTime() ;
+            long nbOfDays=TimeUnit.DAYS.convert(daysBetween,TimeUnit.MILLISECONDS);
+               if(nbOfDays==15){
+                    ct.setArchive(true);
+                    System.out.println("dateFin:"+ct.getDateFinContrat());
+                    System.out.println("Specialite:"+ct.getSpecialite());
+                    System.out.println("Etudiant concerné:"+ct.getEtudiant().getNom());
+            }
+        }
     }
 }

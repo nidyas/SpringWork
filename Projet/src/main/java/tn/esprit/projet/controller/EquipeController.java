@@ -1,7 +1,6 @@
 package tn.esprit.projet.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.projet.entities.DetailEquipe;
 import tn.esprit.projet.entities.Equipe;
@@ -68,10 +67,15 @@ public class EquipeController {
        iEquipeService.deleteEquipeByNiveau(niveau);
     }
 
-    @GetMapping("/EqpQ/{niveau}/{thematique}")
+    /*@GetMapping("/EqpQ/{niveau}/{thematique}")
     public List<Equipe> GeteqpQu(@PathVariable Niveau niveau,@PathVariable String thematique){
 
         return  iEquipeService.retriveEquipeByNiveauAndThematique(niveau,thematique);
+    }*/
+    @GetMapping("/nbEqp")
+    public void findnbrEqpbyLEVEL (){
+
+          iEquipeService.findnbrEqpbyniveau();
     }
 
 
@@ -84,5 +88,26 @@ public class EquipeController {
     public  void deleteEqp(@PathVariable("IdEquipe") Long id){
 
         iEquipeService.deleteeqp(id);
+    }
+
+    @GetMapping("/nbretd")
+    void getnbretddansEquipe(){
+        iEquipeService.ListEtddansEquipe();
+    }
+
+
+    @PutMapping("/AssDet/{IdEqp}")
+    public  void assignEqptoDEt(@RequestBody Equipe D,@PathVariable("IdEqp") Long idDe){
+      iEquipeService.AddAndAssigntoDetail(D,idDe);
+    }
+
+    @GetMapping("/lawej/{idEquipe}")
+    public DetailEquipe Lawej3alID(@PathVariable("idEquipe") Long id) {
+        return  iEquipeService.Lawej3alID(id);
+    }
+
+    @GetMapping("/findIF")
+    public List<DetailEquipe> el9AnotAss(){
+        return  iEquipeService.findIFnotAssigned();
     }
 }

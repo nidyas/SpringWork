@@ -1,7 +1,6 @@
 package tn.esprit.projet.services;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.projet.entities.*;
@@ -85,9 +84,11 @@ public class EtudiantServiceIMPL implements IEtudiantService{
     @Override
     public Set<Etudiant> getEtudiantsByDepartement(Long idDepartement) {
         Departement departement=departementRepository.findById(idDepartement).orElse(null);
-
         return departement.getEtudiants();
     }
-
+    /*@Scheduled(fixedRate = 60000)
+    public  void schdulermethod(){
+        System.out.println("rani  nemchi schedule EQ sport ");
+    }*/
 
 }

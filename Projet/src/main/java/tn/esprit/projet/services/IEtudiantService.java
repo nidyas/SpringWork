@@ -1,7 +1,5 @@
 package tn.esprit.projet.services;
 
-import org.springframework.data.repository.query.Param;
-import tn.esprit.projet.entities.Equipe;
 import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.entities.Option;
 

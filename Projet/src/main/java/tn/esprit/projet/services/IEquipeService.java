@@ -1,6 +1,7 @@
 package tn.esprit.projet.services;
 
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.Query;
+import tn.esprit.projet.entities.DetailEquipe;
 import tn.esprit.projet.entities.Equipe;
 import tn.esprit.projet.entities.Niveau;
 
@@ -20,7 +21,20 @@ public interface IEquipeService {
     List<Equipe> findEquipesByEtudiantsIdEtudiantAndEtudiantsDepartementIdDepart(Long id1,Long id2);
     void deleteEquipeByNiveau( Niveau niveau);
 
-    List<Equipe> retriveEquipeByNiveauAndThematique(Niveau niveau ,String thematique);
+   // List<Equipe> retriveEquipeByNiveauAndThematique(Niveau niveau ,String thematique);
+
+    public void findnbrEqpbyniveau();
+
+    void ListEtddansEquipe();
+    Equipe AddAndAssigntoDetail(Equipe e, Long idDet);
+
+
+    DetailEquipe Lawej3alID(Long idE);
+
+    List<DetailEquipe> findIFnotAssigned();
+
+
+
 
 
 

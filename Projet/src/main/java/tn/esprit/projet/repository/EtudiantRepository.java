@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import tn.esprit.projet.entities.Equipe;
+import tn.esprit.projet.entities.Contrat;
 import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.entities.Option;
 
@@ -24,7 +24,7 @@ public interface EtudiantRepository extends JpaRepository<Etudiant,Long> {
      @Query("SELECT etudiant FROM Etudiant etudiant"
              + " INNER JOIN etudiant.equipes equipe"
              + " INNER JOIN DetailEquipe detail"
-             + " ON detail.IdEquipe = equipe.idEquipe"
+             + " ON detail.IdEqp = equipe.idEquipe"
              + " where detail.thematique= :thematique")
      List<Etudiant> retrieveEtudiantByEquipeThematique ( @Param("thematique") String thematique);
 

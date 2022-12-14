@@ -13,8 +13,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-@ToString
-@EqualsAndHashCode
 
 public class Etudiant implements Serializable {
     //many to many uni wala bi +1 to many(uni) -->dima iji table association
